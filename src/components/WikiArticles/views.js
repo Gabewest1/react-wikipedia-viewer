@@ -1,4 +1,5 @@
 import React from "react"
+import cleanse from "cleanse-html"
 import { WikiArticle, WikiArticles, WikiArticleTitle, WikiArticleDescription } from "./styles"
 
 export default ({ articles }) => {
@@ -15,7 +16,7 @@ const WikiArticleView = ({ article: { title, snippet }}) => {
     return (
         <WikiArticle>
             <WikiArticleTitle>{title}</WikiArticleTitle>
-            <WikiArticleDescription>{snippet}</WikiArticleDescription>
+            <WikiArticleDescription>{cleanse(snippet)}</WikiArticleDescription>
         </WikiArticle>
     )
 }
