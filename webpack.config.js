@@ -68,6 +68,7 @@ const webpackConfig = {
           path.resolve(__dirname, 'src/index.js'),
           path.resolve(__dirname, 'src/lib'),
           path.resolve(__dirname, 'src/reducers'),
+          path.resolve(__dirname, "src/redux"),
           path.resolve(__dirname, 'src/sagas'),
           path.resolve(__dirname, 'src/services'),
           path.resolve(__dirname, 'src/shared')
@@ -173,16 +174,15 @@ const webpackConfig = {
 
   resolve: {
     alias: {
-      Actions: path.resolve(__dirname, 'src/actions'),
       Components: path.resolve(__dirname, 'src/components'),
       Gateway: path.resolve(__dirname, 'src/gateway'),
       Lib: path.resolve(__dirname, 'src/lib'),
       Reducers: path.resolve(__dirname, 'src/reducers'),
+      Redux: path.resolve(__dirname, 'src/redux'),
       Sagas: path.resolve(__dirname, 'src/sagas'),
       Services: path.resolve(__dirname, 'src/services'),
       Shared: path.resolve(__dirname, 'src/components/shared'),
       Store: path.resolve(__dirname, 'src/configureStore.js'),
-      Styles: path.resolve(__dirname, 'src/assets/styles')
     },
 
     extensions: ['.js', '.jsx'],
