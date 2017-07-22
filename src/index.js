@@ -1,6 +1,4 @@
 import 'babel-polyfill';
-import '!style-loader!css-loader!Styles/normalizer.css';
-import '!style-loader!css-loader!Styles/resets.css';
 
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
