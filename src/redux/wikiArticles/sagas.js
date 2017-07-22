@@ -1,10 +1,13 @@
-import { take, call, put } from "redux-saga/effects"
+import { take, call, put, select } from "redux-saga/effects"
 import { actions } from "./reducers"
-import $ from "jquery"
+import { queryWikiArticles } from "Services"
 
 export default function* () {
-    while ( true ) {
-        let { query } = yield take(actions.fetchArticles)
+    while ( yield take("@@redux-form/CHANGE") ) {
+        let state = yield select()
+        let values = state.form.wikiSearchBar.values
+        let query = values ? values.wikiArticleQuery : ""
+        console.log("QUERY:", query)
 
         try {
             let articles = yield call(queryWikiArticles, query)
@@ -16,25 +19,4 @@ export default function* () {
             yield put(actions.fetchArticlesError())
         }
     }
-}
-
-function queryWikiArticles(query) {
-    const URL = `https://en.wikipedia.org/w/api.php?action=query&srsearch=${query}&list=search&format=json`
-    const options = {
-        url: URL,
-        dataType: "jsonp",
-        jsonp: "callback",
-        headers: {"Access-Control-Allow-Origin": "*"},
-    }
-
-    return new Promise((resolve) => {
-        $.ajax(options).then(response => {
-            console.log("HELLOO")
-            console.log(response)
-            let articles = response.query.search
-            console.log("HELLOOfdsfdsfdsfds")
-            console.log(articles)
-            resolve(articles)
-        })
-    })
 }
