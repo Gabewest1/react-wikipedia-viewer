@@ -9,6 +9,11 @@ export default function* () {
         let query = values ? values.wikiArticleQuery : ""
         console.log("QUERY:", query)
 
+        if (query === "") {
+            yield put(actions.fetchArticlesSuccess([]))
+            continue
+        }
+
         try {
             let articles = yield call(queryWikiArticles, query)
             console.log("Between ajax and dispatching success")
