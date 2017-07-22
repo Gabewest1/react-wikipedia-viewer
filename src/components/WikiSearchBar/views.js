@@ -1,10 +1,10 @@
 import React from "react"
+import { Field } from "redux-form"
 
 import { Input, Button } from "./styles"
 
 export const SearchButtonView = (props) => {
     let { children, fetchArticles } = props
-    console.log(props)
 
     return (
         <Button onClick={ () => fetchArticles() }>
@@ -13,8 +13,9 @@ export const SearchButtonView = (props) => {
     )
 }
 
-export const SearchBarView = () => {
+export const SearchBarView = ({ input }) => {
+
     return (
-        <Input />
+        <Input { ...input } />
     )
 }
