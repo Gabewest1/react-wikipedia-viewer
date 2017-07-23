@@ -13,6 +13,12 @@ class WikiViewer extends React.Component {
         //Returns the height of the remaining whitespace on the page
         let { topGlobeId } = this.props
         let el = document.getElementById(topGlobeId)
+
+        //On the first render their won't be any elements to grab so return 100%
+        if (!el) {
+            return "100%"
+        }
+
         let parent = el.parentElement
         let grandparent = parent.parentElement
         let greateGrandParent = grandparent.parentElement
@@ -22,7 +28,10 @@ class WikiViewer extends React.Component {
 
         let heightOfSiblings = siblings.reduce((sum, sib) => {
             let sibHeight = parseInt(window.getComputedStyle(sib).getPropertyValue("height").replace("px", ""))
-            if (sib === parent) return sum
+
+            if (sib === parent) {
+                return sum
+            }
 
             return sum + sibHeight
         }, 0)
