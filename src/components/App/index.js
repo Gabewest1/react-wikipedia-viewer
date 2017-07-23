@@ -1,15 +1,11 @@
 import React from "react"
 
-import WikiSearchBar from "Components/WikiSearchBar"
-import WikiArticles from "Components/WikiArticles"
+import WikiViewer from "Components/WikiViewer"
 
 export default class App extends React.Component {
     render() {
         return (
-            <div>
-                <WikiSearchBar />
-                <WikiArticles />
-            </div>
+            <WikiViewer />
         )
     }
 }
