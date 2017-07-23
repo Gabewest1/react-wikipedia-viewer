@@ -44,10 +44,10 @@ class WikiViewer extends React.Component {
         return (
             <div style={{height: this.getHeight()}}>
                 <ExpandGlobeButtonView { ...this.props } />
+                <WikiArticles />
                 <GlobeView { ...this.props } >
                     <WikiSearchBar />
                 </GlobeView>
-                <WikiArticles />
             </div>
         )
     }
