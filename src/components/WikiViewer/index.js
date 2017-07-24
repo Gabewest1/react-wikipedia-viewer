@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux"
 
 import WikiSearchBar from "Components/WikiSearchBar"
 import WikiArticles from "Components/WikiArticles"
-import { GlobeView, ExpandGlobeButtonView } from "./views"
+import WikiGlobe from "Components/WikiGlobe"
 
 import { actions as wikiGlobeActions } from "Redux/wikiGlobe"
 
@@ -42,12 +42,11 @@ class WikiViewer extends React.Component {
     }
     render() {
         return (
-            <div style={{height: this.getHeight()}}>
-                <ExpandGlobeButtonView { ...this.props } />
-                <WikiArticles />
-                <GlobeView { ...this.props } >
+            <div>
+                <WikiGlobe>
                     <WikiSearchBar />
-                </GlobeView>
+                </WikiGlobe>
+                <WikiArticles />
             </div>
         )
     }

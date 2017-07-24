@@ -5,19 +5,24 @@ const initialState = {
     topGlobeId: "topGlobe",
     bottomGlobeId: "bottomGlobe",
     bottom: "initial",
-    top: "initial"
+    top: "initial",
+    height: "auto"
 }
 
-const { expandGlobe, collapseGlobe } = createActions("EXPAND_GLOBE", "COLLAPSE_GLOBE")
-
+const {
+    expandGlobe,
+    collapseGlobe,
+    setGlobeHeight
+} = createActions("EXPAND_GLOBE", "COLLAPSE_GLOBE", "SET_GLOBE_HEIGHT")
 
 const globeReducer = handleActions({
     [expandGlobe]: (state, action) => ({...state, isExpanded: true}),
-    [collapseGlobe]: (state, action) => ({...state, isExpanded: false})
+    [collapseGlobe]: (state, action) => ({...state, isExpanded: false}),
+    [setGlobeHeight]: (state, action) => ({...state, height: action.payload})
 }, initialState)
 
 export const actions = {
-    expandGlobe, collapseGlobe
+    expandGlobe, collapseGlobe, setGlobeHeight
 }
 
 export default globeReducer
