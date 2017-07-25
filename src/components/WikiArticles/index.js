@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux"
 
 import { WikiArticlesView } from "./views"
 
-import { actions as wikiArticleActions } from "redux/wikiArticles"
+import { actions as wikiArticleActions, selectors as wikiArticleSelectors } from "redux/wikiArticles"
 
 import getElementsHeight from "Lib/getElementsHeight"
 import getSiblings from "Lib/getSiblings"
@@ -38,7 +38,7 @@ class WikiArticles extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        articles: state.wikiArticles.articles,
+        articles: wikiArticleSelectors.selectArticles(state.wikiArticles),
         height: state.wikiArticles.height
     }
 }
