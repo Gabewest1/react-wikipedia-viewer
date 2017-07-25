@@ -21,9 +21,17 @@ class WikiGlobe extends React.Component {
             setGlobeHeight(height + "px")
         }, 1)
     }
+    handleClick(e) {
+        if (this.props.isExpanded) {
+            console.log("preventing default :D")
+            e.preventDefault()
+        } else {
+            this.props.expandGlobe()
+        }
+    }
     render() {
         return (
-            <GlobeView { ...this.props } />
+            <GlobeView onClick={ this.handleClick.bind(this) } { ...this.props } />
         )
     }
 }

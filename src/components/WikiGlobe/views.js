@@ -7,13 +7,13 @@ export const GlobeView = (props) => {
         children, isExpanded, topGlobeId, 
         bottomGlobeId, top, bottom,
         expandGlobe, collapseGlobe,
-        height, setGlobeHeight
+        height, setGlobeHeight, onClick
     } = props
 
-    let onClick = isExpanded ? collapseGlobe : expandGlobe
+    // let onClick = isExpanded ? collapseGlobe : expandGlobe
 
     return (
-        <Globe onClick={ () => onClick() } height={ height }>
+        <Globe onClick={ onClick } height={ height }>
             <GlobeTop
                 src="assets/images/wiki-globe-left.png"
                 id={ topGlobeId }

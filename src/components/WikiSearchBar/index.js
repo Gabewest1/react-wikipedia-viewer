@@ -4,22 +4,35 @@ import { bindActionCreators } from "redux"
 import { Field, reduxForm } from "redux-form"
 
 import { SearchBarView, SearchButtonView } from "./views"
+import { Wrapper } from "./styles"
 
 import { actions as wikiArticleActions } from "redux/wikiArticles"
 
 class WikiSearchBar extends React.Component {
+    constructor() {
+        super()
+        this.state = { height: "auto" }
+    }
     render() {
+        let { isExpanded } = this.props
+        let { height } = this.state
+
         return (
-            <div>
+            <Wrapper
+              isExpanded={ isExpanded }
+              onHeightReady={ (height) => this.setState({ height: height + "px" }) } >
+
                 <Field { ...this.props } name="wikiArticleQuery" component={ SearchBarView } type="text" />
-                <SearchButtonView { ...this.props }>Search Wiki</SearchButtonView>
-            </div>
+                <SearchButtonView height={ height } { ...this.props }>Search Wiki</SearchButtonView>
+            </Wrapper>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return {}
+    return {
+        isExpanded: state.wikiGlobe.isExpanded
+    }
 }
 
 function mapDispatchToProps(dispatch) {
