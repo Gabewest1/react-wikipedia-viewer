@@ -18,14 +18,13 @@ class WikiArticles extends React.Component {
     fillRemainingSpace() {
         let articlesElement = document.getElementById("articles")
         let parent = articlesElement.parentElement
-        let siblings = articlesElement.siblings
+        let siblings = getSiblings(articlesElement, (sib) => sib !== articlesElement)
 
         console.log(articlesElement, parent, siblings)
 
-        let siblingsHeight = siblings.forEach((sum, sib) => sum + getElementsHeight(sib), 0)
+        let siblingsHeight = siblings.reduce((sum, sib) => sum + getElementsHeight(sib), 0)
         let parentHeight = getElementsHeight(parent)
         let articlesHeight = parentHeight - siblingsHeight
-
 
         this.props.setArticlesHeight(articlesHeight + "px")
     }
@@ -38,11 +37,14 @@ class WikiArticles extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {articles: state.wikiArticles.articles}
+    return {
+        articles: state.wikiArticles.articles,
+        height: state.wikiArticles.height
+    }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({wikiArticleActions}, dispatch)
+    return bindActionCreators(wikiArticleActions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WikiArticles)
