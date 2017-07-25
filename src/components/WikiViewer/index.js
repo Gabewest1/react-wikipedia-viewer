@@ -43,9 +43,11 @@ class WikiViewer extends React.Component {
     render() {
         return (
             <div style={{ height: "100%"}}>
-                <WikiGlobe>
-                    <WikiSearchBar />
-                </WikiGlobe>
+                <div style={{maxHeight: "50%"}}>
+                    <WikiGlobe>
+                        <WikiSearchBar />
+                    </WikiGlobe>
+                </div>
                 <WikiArticles />
             </div>
         )

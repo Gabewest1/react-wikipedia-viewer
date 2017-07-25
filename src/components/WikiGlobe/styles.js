@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+//The height of the Globe is dependent on the height set by the GlobeTop and GlobeBottom
+//when they initially get rendered to the browser
 export const Globe = styled.div`
     position: relative;
     display: flex;
@@ -7,16 +9,16 @@ export const Globe = styled.div`
     justify-content: center;
     height: ${({ height }) => height};
 `
-export const GlobeTop = styled.img`
+const GlobeImage = styled.img`
     position: absolute;
+    max-height: ${window.innerHeight / 2}px;
     max-width: 50%;
     transition: all 1s ease-in-out;
+`
+export const GlobeTop = styled(GlobeImage)`
     ${({ isExpanded }) => getStyles(isExpanded, "top")}
 `
-export const GlobeBottom = styled.img`
-    position: absolute;
-    max-width: 50%;
-    transition: all 1s ease-in-out;
+export const GlobeBottom = styled(GlobeImage)`
     ${({ isExpanded }) => getStyles(isExpanded, "bottom")}
 `
 
