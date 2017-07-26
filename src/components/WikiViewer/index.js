@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux"
 import WikiSearchBar from "Components/WikiSearchBar"
 import WikiArticles from "Components/WikiArticles"
 import WikiGlobe from "Components/WikiGlobe"
+import { Container } from "./styles"
 
 import { actions as wikiGlobeActions } from "Redux/wikiGlobe"
 
@@ -42,12 +43,12 @@ class WikiViewer extends React.Component {
     }
     render() {
         return (
-            <div style={{ height: "100%" }}>
+            <Container>
                 <WikiGlobe>
                     <WikiSearchBar />
                 </WikiGlobe>
                 <WikiArticles />
-            </div>
+            </Container>
         )
     }
 }
