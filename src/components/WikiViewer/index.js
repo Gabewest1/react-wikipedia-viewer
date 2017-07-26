@@ -11,8 +11,8 @@ import { actions as wikiGlobeActions } from "Redux/wikiGlobe"
 class WikiViewer extends React.Component {
     getHeight() {
         //Returns the height of the remaining whitespace on the page
-        let { topGlobeId } = this.props
-        let el = document.getElementById(topGlobeId)
+        let { firstGlobeId } = this.props
+        let el = document.getElementById(firstGlobeId)
 
         //On the first render their won't be any elements to grab so return 100%
         if (!el) {
@@ -55,8 +55,8 @@ class WikiViewer extends React.Component {
 function mapStateToProps(state) {
     return {
         isExpanded: state.wikiGlobe.isExpanded,
-        topGlobeId: state.wikiGlobe.topGlobeId,
-        bottomGlobeId: state.wikiGlobe.bottomGlobeId,
+        firstGlobeId: state.wikiGlobe.firstGlobeId,
+        secondGlobeId: state.wikiGlobe.secondGlobeId,
         top: state.wikiGlobe.top,
         bottom: state.wikiGlobe.bottom
     }

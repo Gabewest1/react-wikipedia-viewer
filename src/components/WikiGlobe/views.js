@@ -3,8 +3,8 @@ import { Globe, GlobeTop, GlobeBottom } from "./styles"
 
 export const GlobeView = (props) => {
     let { 
-        children, isExpanded, topGlobeId, 
-        bottomGlobeId, top, bottom,
+        children, isExpanded, firstGlobeId, 
+        secondGlobeId, top, bottom,
         expandGlobe, collapseGlobe,
         height, setGlobeHeight, onClick
     } = props
@@ -15,7 +15,7 @@ export const GlobeView = (props) => {
         <Globe onClick={ onClick } height={ height }>
             <GlobeTop
                 src="assets/images/wiki-globe-left.png"
-                id={ topGlobeId }
+                id={ firstGlobeId }
                 isExpanded={ isExpanded }
                 top={ top } />
 
@@ -23,7 +23,7 @@ export const GlobeView = (props) => {
 
             <GlobeBottom
                 src="assets/images/wiki-globe-right.png"
-                id={ bottomGlobeId }
+                id={ secondGlobeId }
                 isExpanded={ isExpanded }
                 bottom={ bottom } />
         </Globe>

@@ -7,6 +7,7 @@ import { SearchBarView, SearchButtonView } from "./views"
 import { Wrapper } from "./styles"
 
 import { actions as wikiArticleActions } from "redux/wikiArticles"
+import { selectors as wikiGlobeSelectors } from "redux/wikiGlobe"
 
 class WikiSearchBar extends React.Component {
     constructor() {
@@ -19,8 +20,8 @@ class WikiSearchBar extends React.Component {
 
         return (
             <Wrapper
-              isExpanded={ isExpanded }
-              onHeightReady={ (height) => this.setState({ height: height + "px" }) } >
+                isExpanded={ isExpanded }
+                onHeightReady={ height => this.setState({ height: height + "px" }) } >
 
                 <Field { ...this.props } name="wikiArticleQuery" component={ SearchBarView } type="text" />
                 <SearchButtonView height={ height } { ...this.props }>Search Wiki</SearchButtonView>
@@ -30,8 +31,10 @@ class WikiSearchBar extends React.Component {
 }
 
 function mapStateToProps(state) {
+    let { wikiGlobe } = state
+
     return {
-        isExpanded: state.wikiGlobe.isExpanded
+        isExpanded: wikiGlobeSelectors.selectIsExpanded(wikiGlobe)
     }
 }
 

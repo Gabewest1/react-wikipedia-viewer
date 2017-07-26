@@ -3,12 +3,13 @@ import React from "react"
 import { Input, Button } from "./styles"
 
 export const SearchButtonView = props => {
-    let { children, fetchArticles, height } = props
+    let { children, fetchArticles, height, isExpanded } = props
 
     return (
         <Button
             onClick={ () => fetchArticles() }
-            height={ height } />
+            height={ height }
+            isExpanded={ isExpanded } />
     )
 }
 

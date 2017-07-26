@@ -6,7 +6,7 @@ import { WikiArticlesView } from "./views"
 
 import { actions as wikiArticleActions, selectors as wikiArticleSelectors } from "redux/wikiArticles"
 
-import getElementsHeight from "Lib/getElementsHeight"
+import getElementsComputedStyle from "Lib/getElementsComputedStyle"
 import getSiblings from "Lib/getSiblings"
 
 class WikiArticles extends React.Component {
@@ -22,8 +22,8 @@ class WikiArticles extends React.Component {
 
         console.log(articlesElement, parent, siblings)
 
-        let siblingsHeight = siblings.reduce((sum, sib) => sum + getElementsHeight(sib), 0)
-        let parentHeight = getElementsHeight(parent)
+        let siblingsHeight = siblings.reduce((sum, sib) => sum + getElementsComputedStyle(sib, "height"), 0)
+        let parentHeight = getElementsComputedStyle(parent, "height")
         let articlesHeight = parentHeight - siblingsHeight
 
         this.props.setArticlesHeight(articlesHeight + "px")

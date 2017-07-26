@@ -2,11 +2,12 @@ import { createActions, handleActions } from "redux-actions"
 
 const initialState = {
     isExpanded: false,
-    topGlobeId: "topGlobe",
-    bottomGlobeId: "bottomGlobe",
+    firstGlobeId: "topGlobe",
+    secondGlobeId: "bottomGlobe",
     bottom: "initial",
     top: "initial",
-    height: "auto"
+    height: "auto",
+    width: "auto"
 }
 
 const {

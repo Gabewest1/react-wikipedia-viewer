@@ -11,7 +11,7 @@ export const Globe = styled.div`
 `
 const GlobeImage = styled.img`
     position: absolute;
-    max-height: ${window.innerHeight / 2}px;
+    max-height: ${window.innerHeight / 3}px;
     max-width: 50%;
     transition: all 1s ease-in-out;
 `

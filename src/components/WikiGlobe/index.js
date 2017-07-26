@@ -6,12 +6,12 @@ import WikiSearchBar from "Components/WikiSearchBar"
 import WikiArticles from "Components/WikiArticles"
 import { GlobeView } from "./views"
 
-import { actions as wikiGlobeActions } from "Redux/wikiGlobe"
+import { actions as wikiGlobeActions, selectors as wikiGlobeSelectors } from "Redux/wikiGlobe"
 
 class WikiGlobe extends React.Component {
     componentDidMount() {
-        let { topGlobeId, setGlobeHeight } = this.props
-        let globeElement = document.getElementById(topGlobeId)
+        let { firstGlobeId, setGlobeHeight } = this.props
+        let globeElement = document.getElementById(firstGlobeId)
 
         //Need setTimeout bc this function runs before the TopGlobe element is rendered
         //in the browser
@@ -30,6 +30,7 @@ class WikiGlobe extends React.Component {
         }
     }
     render() {
+
         return (
             <GlobeView onClick={ this.handleClick.bind(this) } { ...this.props } />
         )
@@ -37,13 +38,17 @@ class WikiGlobe extends React.Component {
 }
 
 function mapStateToProps(state) {
+    let { wikiGlobe } = state
+
     return {
-        isExpanded: state.wikiGlobe.isExpanded,
-        topGlobeId: state.wikiGlobe.topGlobeId,
-        bottomGlobeId: state.wikiGlobe.bottomGlobeId,
-        top: state.wikiGlobe.top,
-        bottom: state.wikiGlobe.bottom,
-        height: state.wikiGlobe.height
+        isExpanded: wikiGlobeSelectors.selectIsExpanded(wikiGlobe),
+        firstGlobeId: wikiGlobeSelectors.selectFirstGlobeId(wikiGlobe),
+        secondGlobeId: wikiGlobeSelectors.selectSecondGlobeId(wikiGlobe),
+        top: wikiGlobeSelectors.selectTop(wikiGlobe),
+        bottom: wikiGlobeSelectors.selectBottom(wikiGlobe),
+        height: wikiGlobeSelectors.selectHeight(wikiGlobe),
+        w1: wikiGlobeSelectors.selectFirstGlobeWidth(wikiGlobe),
+        w2: wikiGlobeSelectors.selectSecondGlobeWidth(wikiGlobe)
     }
 }
 
