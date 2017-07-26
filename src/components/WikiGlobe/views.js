@@ -1,6 +1,5 @@
 import React from "react"
 import { Globe, GlobeTop, GlobeBottom } from "./styles"
-import { ReactHeight } from "react-height"
 
 export const GlobeView = (props) => {
     let { 
