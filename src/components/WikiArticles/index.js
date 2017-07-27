@@ -19,16 +19,21 @@ class WikiArticles extends React.Component {
         let articlesElement = document.getElementById("articles")
         let parent = articlesElement.parentElement
         let siblings = getSiblings(articlesElement, (sib) => sib !== articlesElement)
+        let margin = parseInt(this.props.margin.replace("px", ""))
+
 
         console.log(articlesElement, parent, siblings)
 
         let siblingsHeight = siblings.reduce((sum, sib) => sum + getElementsComputedStyle(sib, "height"), 0)
         let parentHeight = getElementsComputedStyle(parent, "height")
-        let articlesHeight = parentHeight - siblingsHeight
+        let articlesHeight = parentHeight - siblingsHeight - margin * 2
+
+        console.log("HEIGHTS:", parentHeight - siblingsHeight, articlesHeight)
 
         this.props.setArticlesHeight(articlesHeight + "px")
     }
     render() {
+        console.log(this.props)
 
         return (
             <WikiArticlesView id="articles" { ...this.props } />
