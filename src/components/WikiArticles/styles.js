@@ -19,7 +19,7 @@ export const WikiArticle = styled.li`
     padding-left: 10px;
 `
 
-export const WikiArticleTitle = styled.h1`
+export const WikiArticleTitle = styled.a`
     margin: 0;
     margin-bottom: ${itemMargin}px;
 `

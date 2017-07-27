@@ -11,11 +11,11 @@ export const WikiArticlesView = ({ id, height, margin, articles }) => {
     )
 }
 
-const WikiArticleView = ({ article: { name, description }}) => {    
+const WikiArticleView = ({ article: { name, description, url }}) => {    
 
     return (
         <WikiArticle>
-            <WikiArticleTitle>{name}</WikiArticleTitle>
+            <WikiArticleTitle href={ url }>{name}</WikiArticleTitle>
             <WikiArticleDescription>{cleanse(description)}</WikiArticleDescription>
         </WikiArticle>
     )
