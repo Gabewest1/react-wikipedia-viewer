@@ -19,7 +19,6 @@ const selectArticles = (state) => {
         newArticles.push({ name, description, url })
     }
 
-    console.log("NEW ARTICLES:", newArticles)
     return newArticles
 }
 

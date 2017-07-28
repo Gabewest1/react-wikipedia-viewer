@@ -14,7 +14,6 @@ export function queryWikiArticles(query) {
 
     return new Promise((resolve) => {
         $.ajax(options).then(response => {
-            console.log(response)
             resolve(response)
         })
     })
