@@ -19,12 +19,14 @@ export const WikiArticle = styled.li`
     padding-left: 10px;
 `
 
-export const WikiArticleTitle = styled.a`
+export const WikiArticleTitle = styled.h1`
     margin: 0;
     margin-bottom: ${itemMargin}px;
+    text-decoration: underline;
 `
 
 export const WikiArticleDescription = styled.p`
     margin: 0;
     margin-bottom: ${itemMargin}px;
+    font-style: italic;
 `
