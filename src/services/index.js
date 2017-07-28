@@ -9,7 +9,7 @@ export function queryWikiArticles(query) {
         url: URL,
         dataType: "jsonp",
         jsonp: "callback",
-        headers: {"Access-Control-Allow-Origin": "*"},
+        headers: {"Access-Control-Allow-Origin": "*"}
     }
 
     return new Promise((resolve) => {

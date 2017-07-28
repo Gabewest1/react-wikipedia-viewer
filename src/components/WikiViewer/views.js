@@ -1,5 +1,5 @@
 import React from "react" 
-import { ExpandGlobeButton } from "./styles"
+import { ExpandGlobeButton, Modal, TintedBackground } from "./styles"
 
 export const ExpandGlobeButtonView = (props) => {
     let { isExpanded, expandGlobe, collapseGlobe, children } = props
@@ -7,7 +7,7 @@ export const ExpandGlobeButtonView = (props) => {
     let onClick = isExpanded ? collapseGlobe : expandGlobe
     let text = children ? children :
                isExpanded ? "Close Globe" : "Open the Earth"
- 
+
     return (
         <ExpandGlobeButton onClick={ () => onClick() }>{ text }</ExpandGlobeButton>
     )

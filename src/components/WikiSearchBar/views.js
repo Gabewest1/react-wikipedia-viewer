@@ -3,13 +3,15 @@ import React from "react"
 import { Input, Button } from "./styles"
 
 export const SearchButtonView = props => {
-    let { children, fetchArticles, height, isExpanded } = props
+    let { children, fetchRandomWikiArticles, height, isExpanded } = props
 
     return (
         <Button
-            onClick={ () => fetchArticles() }
+            onClick={ () => fetchRandomWikiArticles() }
             height={ height }
-            isExpanded={ isExpanded } />
+            isExpanded={ isExpanded }>
+            Random
+        </Button>
     )
 }
 

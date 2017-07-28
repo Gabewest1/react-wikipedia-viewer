@@ -1,5 +1,5 @@
 export default function(element, style) {
-    console.log(element)
+    let value = window.getComputedStyle(element).getPropertyValue(style)
 
-    return parseInt(window.getComputedStyle(element).getPropertyValue(style))
+    return (style === "width" || style === "height") ? parseInt(value) : value
 }

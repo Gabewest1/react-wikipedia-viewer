@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
+import getElementsComputedStyle from "Lib/getElementsComputedStyle"
 
 import WikiSearchBar from "Components/WikiSearchBar"
 import WikiArticles from "Components/WikiArticles"
@@ -16,7 +17,7 @@ class WikiGlobe extends React.Component {
         //Need setTimeout bc this function runs before the TopGlobe element is rendered
         //in the browser
         setTimeout(() => {
-            let height = parseInt(window.getComputedStyle(globeElement).getPropertyValue("height"))
+            let height = getElementsComputedStyle(globeElement, "height")
             console.log("HEIGHT:", globeElement, height)
             setGlobeHeight(height + "px")
         }, 1)

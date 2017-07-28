@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { ReactHeight } from "react-height"
+import colors from "Lib/colors"
 
 //The animation timing is coupled with the animation timing in the wikiGlobe component
 export const Wrapper = styled(ReactHeight)`
@@ -11,18 +12,24 @@ export const Wrapper = styled(ReactHeight)`
 `
 export const Input = styled.input`
     padding: 10px 15px;
+    border: none;
     outline: none;
     width: 100%
 `
 export const Button = styled.button`
-    background: url(assets/images/icons/search.svg);
+    background: lightgray;
     background-size: 100% 100%;
-    width: ${({ height }) => height };  //This creates a square box
+    // width: ${({ height }) => height };  //This creates a square box
     opacity: ${({ isExpanded }) => isExpanded ? 1 : 0};
     position: absolute;
     right: 0;
-    padding: 0;
+    border: none;
+    padding: 0 5px;
     outline: none;
     height: 100%;
     transition: opacity .5s ease-in-out 1s;
+
+    &:active {
+        background: darkgray;
+    }
 `

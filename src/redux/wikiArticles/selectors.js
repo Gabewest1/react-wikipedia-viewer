@@ -8,7 +8,7 @@ const selectArticles = (state) => {
     let numOfArticles = articles[1].length
     let names = articles[1]
     let descriptions = articles[2]
-    let urls = [articles[3]]
+    let urls = articles[3]
 
     let newArticles = []
 
@@ -23,7 +23,9 @@ const selectArticles = (state) => {
     return newArticles
 }
 
+const selectCurrentArticleUrl = (state) => state.currentArticle
 
 export default {
-    selectArticles
+    selectArticles,
+    selectCurrentArticleUrl
 }
