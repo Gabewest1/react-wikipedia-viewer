@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux"
 
 import { WikiArticlesView } from "./views"
 
-import { actions as wikiArticleActions, selectors as wikiArticleSelectors } from "redux/wikiArticles"
+import { actions as wikiArticleActions, selectors as wikiArticleSelectors } from "Redux/wikiArticles"
 
 import getElementsComputedStyle from "Lib/getElementsComputedStyle"
 import getSiblings from "Lib/getSiblings"
@@ -18,11 +18,11 @@ class WikiArticles extends React.Component {
     fillRemainingSpace() {
         let articlesElement = document.getElementById("articles")
         let parent = articlesElement.parentElement
-        let siblings = getSiblings(articlesElement, (sib) => sib !== articlesElement)
+        let siblings = getSiblings(articlesElement, (sib) =>
+            sib !== articlesElement && getElementsComputedStyle(sib, "position") !== "absolute"
+        )
+
         let margin = parseInt(this.props.margin.replace("px", ""))
-
-
-        console.log(articlesElement, parent, siblings)
 
         let siblingsHeight = siblings.reduce((sum, sib) => sum + getElementsComputedStyle(sib, "height"), 0)
         let parentHeight = getElementsComputedStyle(parent, "height")
@@ -33,7 +33,6 @@ class WikiArticles extends React.Component {
         this.props.setArticlesHeight(articlesHeight + "px")
     }
     render() {
-        console.log(this.props)
 
         return (
             <WikiArticlesView id="articles" { ...this.props } />
