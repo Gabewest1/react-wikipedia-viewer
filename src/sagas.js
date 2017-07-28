@@ -1,8 +1,10 @@
-import { all } from "redux-saga/effects"
-import { sagas as wikiArticleSagas } from "redux/wikiArticles"
+import { fork } from "redux-saga/effects"
+import { sagas as wikiArticleSagas } from "Redux/wikiArticles"
+import { sagas as wikiIframeSagas } from "Redux/wikiIframe"
 
 export default function* rootSaga() {
-    yield all([
-        wikiArticleSagas()
-    ])
+    yield [
+        fork(wikiArticleSagas),
+        fork(wikiIframeSagas)
+    ]
 }
