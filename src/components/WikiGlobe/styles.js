@@ -26,13 +26,13 @@ export const GlobeBottom = styled(GlobeImage)`
 function getStyles(isExpanded, topOrBottom) {
     //Sets the styles for the two halfs of the globes( (top/left) && (bottom/right) )
     let collapsedStyles = {
-        "top": `left: 50%; transform: translateX(-50%);`,
-        "bottom": `right: 50%; transform: translateX(50%);`
+        top: `left: 50%; transform: translateX(-50%); cursor: pointer;`,
+        bottom: `right: 50%; transform: translateX(50%); cursor: pointer;`
     }
 
     let expandedStyles = {
-        "top": `left: 0;`,
-        "bottom": `right: 0;`
+        top: `left: 0;`,
+        bottom: `right: 0;`
     }
 
     if (topOrBottom === "top") {
