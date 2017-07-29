@@ -6,10 +6,11 @@ import WikiSearchBar from "Components/WikiSearchBar"
 import WikiArticles from "Components/WikiArticles"
 import WikiGlobe from "Components/WikiGlobe"
 import WikiIframe from "Components/WikiIframe"
-import { Container, IFrameWrapper, RandomButton, TintedBackground } from "./styles"
+import { Container, IFrameWrapper, TintedBackground } from "./styles"
 
 import { actions as wikiGlobeActions } from "Redux/wikiGlobe"
 import { actions as wikiArticleActions, selectors as wikiArticleSelectors } from "Redux/wikiArticles"
+import { actions as wikiIframeActions, selectors as wikiIframeSelectors } from "Redux/wikiIframe"
 
 class WikiViewer extends React.Component {
     constructor() {
@@ -19,15 +20,26 @@ class WikiViewer extends React.Component {
         //articles component in its fillRemainingSpace() method
         this.state = {margin: "20px"}
     }
+    handleTransitionEnd = (e) => {
+        if (e.propertyName === "opacity") {
+            console.log("FADEIFRAMEFINISHED OPACITY", e.target)
+            this.props.fadeIframeFinished()
+        }
+    }
     render() {
-        let { src, fetchRandomWikiArticles } = this.props
+        let { src, fetchRandomWikiArticles, isFadedIn, fadeOut, fadeIn, isExpanded } = this.props
+        let iFrameWrapperProps = { isFadedIn, fadeOut, fadeIn, isExpanded, src }
 
         return (
             <Container>
-                <IFrameWrapper src={ src }>
+                <TintedBackground
+                    onTransitionEnd={ this.handleTransitionEnd }
+                    { ...iFrameWrapperProps } />
+                <IFrameWrapper
+                    { ...iFrameWrapperProps }>
+
                     <WikiIframe />
                 </IFrameWrapper>
-                {src && <TintedBackground />}
                 <WikiGlobe>
                     <WikiSearchBar />
                 </WikiGlobe>
@@ -38,20 +50,19 @@ class WikiViewer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    let { wikiArticles } = state
+    let { wikiArticles, wikiIframe } = state
 
     return {
-        isExpanded: state.wikiGlobe.isExpanded,
-        firstGlobeId: state.wikiGlobe.firstGlobeId,
-        secondGlobeId: state.wikiGlobe.secondGlobeId,
-        top: state.wikiGlobe.top,
-        bottom: state.wikiGlobe.bottom,
-        src: wikiArticleSelectors.selectCurrentArticleUrl(wikiArticles)
+        src: wikiArticleSelectors.selectCurrentArticleUrl(wikiArticles),
+        isFadedIn: wikiIframeSelectors.selectFadeInStatus(wikiIframe),
+        isExpanded: wikiIframeSelectors.selectExpandedStatus(wikiIframe),
+        fadeIn: wikiIframeSelectors.selectFadeIn(wikiIframe),
+        fadeOut: wikiIframeSelectors.selectFadeOut(wikiIframe)
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...wikiArticleActions, ...wikiGlobeActions}, dispatch)
+    return bindActionCreators({...wikiArticleActions, ...wikiGlobeActions, ...wikiIframeActions}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WikiViewer)
