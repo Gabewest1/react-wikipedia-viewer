@@ -5,16 +5,17 @@ export const Iframe = styled.iframe`
     height: 100%;
 `
 
-export const Container = styled.div`
+export const Modal = styled.div`
     position: absolute;
-    width: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 0%;
+    width: 0%;
     transition: all 1s ease-in-out;
-    padding: 10px;
-    box-sizing: border-box;
 
-    ${({ src }) => {
-        if (!src) {
+    ${({ isExpanded }) => {
+        if (!isExpanded) {
             return ``
         }
 
@@ -32,16 +33,6 @@ export const Container = styled.div`
         return `height: ${height}px; width: ${width}px;`
     }}
 `
-
-export const Modal = styled.div`
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    z-index: 100;
-`
 export const CloseModalButton = styled.button`
     border-radius: 50%;
     background: black;
@@ -52,4 +43,5 @@ export const CloseModalButton = styled.button`
     transform: translate(50%, -50%);
     width: 2em;
     height: 2em;
+    opacity: ${({ isExpanded }) => isExpanded ? 1 : 0};
 `

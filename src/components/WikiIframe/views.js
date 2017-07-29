@@ -1,14 +1,15 @@
 import React from "react"
-import { Container, Iframe, Modal, TintedBackground, CloseModalButton } from "./styles"
+import { Iframe, Modal, CloseModalButton } from "./styles"
 
-//The Modal only renders and shows 
-export const WikiIframeView = ({ src, setCurrentArticle }) => {
+export const WikiIframeView = ({ src, onTransitionEnd, onClick, isExpanded }) => {
+
     return (
-        <Container src={ src }>
-            <Modal>
-                <CloseModalButton onClick={ () => setCurrentArticle("") }>X</CloseModalButton>
-                <Iframe src={ src } />
-            </Modal>
-        </Container>
+        <Modal
+            isExpanded={ isExpanded }
+            onTransitionEnd={ onTransitionEnd }>
+
+            <CloseModalButton onClick={ onClick } isExpanded={ isExpanded }>X</CloseModalButton>
+            <Iframe src={ src } />
+        </Modal>
     )
 }
