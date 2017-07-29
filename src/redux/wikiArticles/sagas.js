@@ -1,14 +1,14 @@
-import { all, takeLatest, call, put, select } from "redux-saga/effects"
+import { fork, takeLatest, call, put, select } from "redux-saga/effects"
 import { change } from "redux-form"
 import { actions } from "./reducers"
-import { queryWikiArticles, queryRandomWikiArticles } from "Services"
+import { queryWikiArticles } from "Services"
 import randomWords from "random-words"
 
 export default function* rootSaga() {
-    yield all([
-        watchFormChange(),
-        watchFetchRandomArticles()
-    ])
+    yield [
+        fork(watchFormChange),
+        fork(watchFetchRandomArticles)
+    ]
 }
 export function* watchFormChange() {
     yield takeLatest("@@redux-form/CHANGE", updateViewWithQuery)
