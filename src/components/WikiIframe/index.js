@@ -8,10 +8,10 @@ import { actions as wikiIframeActions, selectors as wikiIframeSelectors } from "
 import { WikiIframeView } from "./views"
 
 class WikiIframe extends React.Component {
-    onClick = () => {
+    closeIframe = () => {
         this.props.fadeOutIframe()
     }
-    onTransitionEnd = (e) => {
+    handleExpandingAnimationEnd = (e) => {
         let transitionName = e.propertyName
 
         if (transitionName === "width") {
@@ -22,8 +22,8 @@ class WikiIframe extends React.Component {
         return (
             <WikiIframeView
                 { ...this.props }
-                onClick= { this.onClick }
-                onTransitionEnd= { this.onTransitionEnd } />
+                onClick= { this.closeIframe }
+                onTransitionEnd= { this.handleExpandingAnimationEnd } />
         )
     }
 }
