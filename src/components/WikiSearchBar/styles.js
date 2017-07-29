@@ -19,7 +19,7 @@ export const Input = styled.input`
 export const Button = styled.button`
     background: lightgray;
     background-size: 100% 100%;
-    // width: ${({ height }) => height };  //This creates a square box
+    cursor: pointer;
     opacity: ${({ isExpanded }) => isExpanded ? 1 : 0};
     position: absolute;
     right: 0;
