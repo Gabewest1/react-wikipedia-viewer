@@ -20,7 +20,7 @@ class WikiGlobe extends React.Component {
             let height = getElementsComputedStyle(globeElement, "height")
             console.log("HEIGHT:", globeElement, height)
             setGlobeHeight(height + "px")
-        }, 1)
+        }, 100)
     }
     handleClick(e) {
         if (this.props.isExpanded) {
