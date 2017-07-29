@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Smart;
+  src: url(/assets/fonts/Executionist.otf);
+}
 body {
   margin: 0;
   padding: 0;
