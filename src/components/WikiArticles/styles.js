@@ -3,7 +3,7 @@ import colors from "Lib/colors"
 
 const itemMargin = 15
 
-const WikiArticleAnimation = keyframes`
+const fadeInAnimation = keyframes`
     from { opacity: 0 }
     to { opacity: 1 }
 `
@@ -23,7 +23,7 @@ export const WikiArticle = styled.li`
     margin-left: 10px;
     border-left: solid 7px black;
     padding-left: 10px;
-    animation: ${WikiArticleAnimation} 1s ease-in-out;
+    animation: ${fadeInAnimation} 1s ease-in-out;
 
     &:hover {
         h1 {
@@ -42,4 +42,13 @@ export const WikiArticleDescription = styled.p`
     margin: 0;
     margin-bottom: ${itemMargin}px;
     font-style: italic;
+`
+
+export const Greeting = styled.h1`
+    text-align: center;
+    font-family: Smart;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    animation: ${fadeInAnimation} 1s linear;
 `

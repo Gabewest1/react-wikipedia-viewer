@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux"
 import { WikiArticlesView } from "./views"
 
 import { actions as wikiArticleActions, selectors as wikiArticleSelectors } from "Redux/wikiArticles"
+import { selectors as wikiGlobeSelectors } from "Redux/wikiGlobe"
 
 import getElementsComputedStyle from "Lib/getElementsComputedStyle"
 import getSiblings from "Lib/getSiblings"
@@ -41,9 +42,12 @@ class WikiArticles extends React.Component {
 }
 
 function mapStateToProps(state) {
+    let { wikiArticles, wikiGlobe } = state
+
     return {
-        articles: wikiArticleSelectors.selectArticles(state.wikiArticles),
-        height: state.wikiArticles.height
+        articles: wikiArticleSelectors.selectArticles(wikiArticles),
+        height: state.wikiArticles.height,
+        isGlobeExpanded: wikiGlobeSelectors.selectIsExpanded(wikiGlobe)
     }
 }
 

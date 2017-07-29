@@ -1,12 +1,18 @@
 import React from "react"
 import cleanse from "cleanse-html"
-import { WikiArticle, WikiArticles, WikiArticleTitle, WikiArticleDescription } from "./styles"
+import { Greeting, WikiArticle, WikiArticles, WikiArticleTitle, WikiArticleDescription } from "./styles"
 
-export const WikiArticlesView = ({ id, height, margin, articles, setCurrentArticle }) => {
+export const WikiArticlesView = ({ id, height, margin, articles, setCurrentArticle, isGlobeExpanded }) => {
+    articles = articles.map((article, i) =>
+        <WikiArticleView key={ i } article={ article } onClick={ setCurrentArticle } />
+    )
 
+    let greetingText = isGlobeExpanded ? "Search an Interesting Topic or See What Whackyness Fate Bestows Upon You"
+                                       : "Click the Globe to Search the World"
     return (
         <WikiArticles id={ id } height={ height } margin={ margin }>
-            {articles.map((article, i) => <WikiArticleView key={ i } article={ article } onClick={ setCurrentArticle } />)}
+            {
+                articles.length > 0 ? articles : <Greeting>{ greetingText }</Greeting>}
         </WikiArticles>
     )
 }
