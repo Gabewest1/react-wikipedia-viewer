@@ -29,6 +29,9 @@ export const Button = styled.button`
     height: 100%;
     transition: opacity .5s ease-in-out 1s;
 
+    &:hover {
+        color: white;
+    }
     &:active {
         background: darkgray;
     }
