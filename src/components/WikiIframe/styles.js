@@ -37,6 +37,8 @@ export const CloseModalButton = styled.button`
     border-radius: 50%;
     background: black;
     color: white;
+    cursor: pointer;
+    outline: none;
     position: absolute;
     top: 0;
     right: 0;
