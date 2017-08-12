@@ -1,11 +1,2 @@
-# Downtown ReactJS Meetup
-
-## Project Night: Buena Nota
-
-### Install
-`npm install`
-
-### pick a branch
-`git checkout -b`
-
-have fun :)
+A portal using wikipedia's API to more easily search for articles. This is part of freecodecamps zipline challenges. Edit
+Add topics
