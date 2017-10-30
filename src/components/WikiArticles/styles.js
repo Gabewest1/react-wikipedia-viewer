@@ -47,8 +47,5 @@ export const WikiArticleDescription = styled.p`
 export const Greeting = styled.h1`
     text-align: center;
     font-family: Smart;
-    height: 100%;
-    display: flex;
-    align-items: center;
     animation: ${fadeInAnimation} 1s linear;
 `
