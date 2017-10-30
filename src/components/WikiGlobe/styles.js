@@ -11,6 +11,7 @@ export const Globe = styled.div`
     height: ${({ height }) => height};
 `
 const GlobeImage = styled.img`
+    cursor: pointer;
     position: absolute;
     max-height: ${window.innerHeight / 3}px;
     max-width: 50%;
@@ -26,8 +27,8 @@ export const GlobeBottom = styled(GlobeImage)`
 function getStyles(isExpanded, topOrBottom) {
     //Sets the styles for the two halfs of the globes( (top/left) && (bottom/right) )
     let collapsedStyles = {
-        top: `left: 50%; transform: translateX(-50%); cursor: pointer;`,
-        bottom: `right: 50%; transform: translateX(50%); cursor: pointer;`
+        top: `left: 50%; transform: translateX(-50%);`,
+        bottom: `right: 50%; transform: translateX(50%);`
     }
 
     let expandedStyles = {

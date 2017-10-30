@@ -26,6 +26,7 @@ class WikiGlobe extends React.Component {
         if (this.props.isExpanded) {
             console.log("preventing default :D")
             e.preventDefault()
+            this.props.collapseGlobe()
         } else {
             this.props.expandGlobe()
         }

@@ -27,7 +27,11 @@ export const Button = styled.button`
     padding: 0 5px;
     outline: none;
     height: 100%;
-    transition: opacity .5s ease-in-out 1s;
+    transition: ${({ isExpanded }) => {
+        return isExpanded
+            ? "opacity .5s ease-in-out 1s"  
+            : "opacity 1s ease-in-out"
+    }};
 
     &:hover {
         color: white;
