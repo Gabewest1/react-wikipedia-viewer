@@ -1,8 +1,12 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
+
+const expandTransition = `all 1s ease-in-out .5s;`
+const closeTransition = `all 1s ease-in-out;`
 
 export const Iframe = styled.iframe`
     width: 100%;
     height: 100%;
+    transition: ${({ isExpanded }) => isExpanded ? expandTransition : closeTransition };    
 `
 
 export const Modal = styled.div`
@@ -12,7 +16,7 @@ export const Modal = styled.div`
     align-items: center;
     height: 0%;
     width: 0%;
-    transition: all 1s ease-in-out;
+    transition: ${({ isExpanded }) => isExpanded ? expandTransition : closeTransition }
 
     ${({ isExpanded }) => {
         if (!isExpanded) {
@@ -30,7 +34,7 @@ export const Modal = styled.div`
             height = width * window.innerHeight / window.innerWidth
         }
 
-        return `height: ${height}px; width: ${width}px;`
+        return `height: ${ height }px; width: ${ width }px;`
     }}
 `
 export const CloseModalButton = styled.button`
