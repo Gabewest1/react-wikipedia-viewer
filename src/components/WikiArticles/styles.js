@@ -15,7 +15,9 @@ export const WikiArticles = styled.ul`
     padding-top: 10px;
     overflow-y: scroll;
     margin: ${({ margin }) => margin};
-    max-height: ${({ height }) => height};
+    height: ${({ isExpanded, isGlobeExpanded, height, maxHeight }) => (isExpanded && isGlobeExpanded) ? maxHeight : height };
+    max-height: ${({ maxHeight }) => maxHeight };
+    transition: height 1s ease-in-out;
 `
 
 export const WikiArticle = styled.li`

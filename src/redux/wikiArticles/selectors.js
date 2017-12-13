@@ -23,8 +23,14 @@ const selectArticles = (state) => {
 }
 
 const selectCurrentArticleUrl = (state) => state.currentArticle
+const isExpanded = (state) => selectArticles(state).length > 0
+const getHeight = (state) => state.height
+const getMaxHeight = (state) => state.maxHeight
 
 export default {
+    getHeight,
+    getMaxHeight,
     selectArticles,
-    selectCurrentArticleUrl
+    selectCurrentArticleUrl,
+    isExpanded
 }

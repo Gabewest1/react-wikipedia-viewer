@@ -3,6 +3,7 @@ import { createActions, handleActions } from "redux-actions"
 const initialState = {
     articles: [],
     height: "auto",
+    maxHeight: "auto",
     loading: false,
     error: false
 }
@@ -13,6 +14,7 @@ const {
     fetchArticlesSuccess,
     fetchArticlesError,
     setArticlesHeight,
+    setArticlesMaxHeight,
     setCurrentArticle
 } = createActions(
     "FETCH_ARTICLES",
@@ -20,7 +22,9 @@ const {
     "FETCH_ARTICLES_SUCCESS",
     "FETCH_ARTICLES_ERROR",
     "SET_ARTICLES_HEIGHT",
-    "SET_CURRENT_ARTICLE")
+    "SET_ARTICLES_MAX_HEIGHT",
+    "SET_CURRENT_ARTICLE"
+)
 
 const articlesReducer = handleActions({
     [fetchArticles]: (state, action) => ({...state, loading: true}),
@@ -28,6 +32,7 @@ const articlesReducer = handleActions({
     [fetchArticlesSuccess]: (state, action) => ({...state, articles: action.payload}),
     [fetchArticlesError]: (state, action) => ({...state, loading: false, error: true}),
     [setArticlesHeight]: (state, action) => ({...state, height: action.payload}),
+    [setArticlesMaxHeight]: (state, action) => ({...state, maxHeight: action.payload}),
     [setCurrentArticle]: (state, action) => ({...state, currentArticle: action.payload})
 }, initialState)
 
@@ -37,6 +42,7 @@ export const actions = {
     fetchArticlesSuccess,
     fetchArticlesError,
     setArticlesHeight,
+    setArticlesMaxHeight,
     setCurrentArticle
 }
 

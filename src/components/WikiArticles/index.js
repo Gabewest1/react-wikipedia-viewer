@@ -15,6 +15,12 @@ class WikiArticles extends React.Component {
         //Need to wait for the articles html to render in the browser
         //before trying to find its height and remaing space
         setTimeout(() => this.fillRemainingSpace(), 1000)
+        this.syncHeightWithReux()
+    }
+    syncHeightWithReux() {
+        let wikiArticles = document.getElementById("articles")
+        let height = getElementsComputedStyle(wikiArticles, "height") + "px"
+        this.props.setArticlesHeight(height)
     }
     fillRemainingSpace() {
         let articlesElement = document.getElementById("articles")
@@ -31,7 +37,7 @@ class WikiArticles extends React.Component {
 
         console.log("HEIGHTS:", parentHeight - siblingsHeight, articlesHeight)
 
-        this.props.setArticlesHeight(articlesHeight + "px")
+        this.props.setArticlesMaxHeight(articlesHeight + "px")
     }
     render() {
 
@@ -46,8 +52,10 @@ function mapStateToProps(state) {
 
     return {
         articles: wikiArticleSelectors.selectArticles(wikiArticles),
-        height: state.wikiArticles.height,
-        isGlobeExpanded: wikiGlobeSelectors.selectIsExpanded(wikiGlobe)
+        height: wikiArticleSelectors.getHeight(wikiArticles),
+        maxHeight: wikiArticleSelectors.getMaxHeight(wikiArticles),
+        isGlobeExpanded: wikiGlobeSelectors.selectIsExpanded(wikiGlobe),
+        isExpanded: wikiArticleSelectors.isExpanded(wikiArticles)
     }
 }
 
