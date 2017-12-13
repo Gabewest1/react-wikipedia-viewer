@@ -14,7 +14,7 @@ class WikiArticles extends React.Component {
     componentDidMount() {
         //Need to wait for the articles html to render in the browser
         //before trying to find its height and remaing space
-        setTimeout(() => this.fillRemainingSpace(), 100)
+        setTimeout(() => this.fillRemainingSpace(), 1000)
     }
     fillRemainingSpace() {
         let articlesElement = document.getElementById("articles")

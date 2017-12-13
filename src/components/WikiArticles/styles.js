@@ -15,7 +15,7 @@ export const WikiArticles = styled.ul`
     padding-top: 10px;
     overflow-y: scroll;
     margin: ${({ margin }) => margin};
-    height: ${({ height }) => height};
+    max-height: ${({ height }) => height};
 `
 
 export const WikiArticle = styled.li`
