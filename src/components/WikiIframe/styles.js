@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components"
 
-const expandTransition = `all 1s ease-in-out .5s;`
+const expandTransition = `all 1s ease-in-out 1s;`
 const closeTransition = `all 1s ease-in-out;`
 
 export const Iframe = styled.iframe`
