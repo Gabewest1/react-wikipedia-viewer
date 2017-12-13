@@ -19,8 +19,8 @@ export const IFrameWrapper = styled.div`
 `
 export const TintedBackground = styled.div`
     position: absolute;
-    width: ${window.innerWidth}px;
-    height: ${window.innerHeight}px;
+    width: 100%;
+    height: 100%;
     background: rgba(0,0,0,.7);
     transition: opacity 1s ease-in-out;
     ${({ isFadedIn, fadeIn, fadeOut }) => getFadingInStyles(isFadedIn, fadeIn, fadeOut)}
