@@ -12,7 +12,7 @@ export const GlobeView = (props) => {
     return (
         <Globe height={ height }>
             <GlobeTop
-                src="assets/images/wiki-globe-left.png"
+                src="/assets/images/wiki-globe-left.png"
                 id={ firstGlobeId }
                 onClick={ onClick }
                 isExpanded={ isExpanded }
@@ -21,7 +21,7 @@ export const GlobeView = (props) => {
             { children }
 
             <GlobeBottom
-                src="assets/images/wiki-globe-right.png"
+                src="/assets/images/wiki-globe-right.png"
                 id={ secondGlobeId }
                 onClick={ onClick }
                 isExpanded={ isExpanded }
