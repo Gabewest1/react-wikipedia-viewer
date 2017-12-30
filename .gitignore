@@ -16,6 +16,5 @@ logs
 # App
 comMsg.md
 .env
-build
 recordsPath.json
 postcss.config.js
